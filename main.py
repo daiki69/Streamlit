@@ -25,10 +25,9 @@ def generate_csv(start_time, end_time, interval_count):
             writer.writerows(rows)
 
         # ダウンロードリンクを表示する
-        st.sidebar.markdown(get_download_link(temp_file_path), unsafe_allow_html=True)
+        st.markdown(get_download_link(temp_file_path), unsafe_allow_html=True)
         
-        st.success("CSVファイルが正常に生成されました！")
-        st.write("CSVファイルを開くには、左のサイドバーのダウンロードボタンをクリックしてください。")
+        st.success("CSVファイルが正常に生成されました！ダウンロードをクリック！")
         
     except ValueError:
         st.error("無効な入力です。正しい値を入力してください。")
@@ -53,7 +52,7 @@ st.set_page_config(page_title="Fuzor4D作成支援ツール")
 st.title("Fuzor4D作成支援ツール")
 
 # 画像を表示する
-image_path = "FuzorLogo.png"  # 画像のパスを指定してください
+image_path = "FuzorLogo.png"  # 画像のパスを指定
 st.image(image_path, caption="4DFuzor", use_column_width=True)
 
 # 開始日時の入力フィールドを作成する
