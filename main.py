@@ -18,7 +18,7 @@ def generate_csv(start_time, end_time, interval_count):
             rows.append({'Time': time.strftime('%Y-%m-%dT%H:%M:%S')})
 
         # ダウンロード用の一時ファイルを作成する
-        temp_file_path = os.path.join(os.getcwd(), 'temp.csv')
+        temp_file_path = os.path.join(os.getcwd(), '4DCreate.csv')
         with open(temp_file_path, mode='w', newline='', encoding='utf-8') as csv_file:
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
             writer.writeheader()
@@ -28,10 +28,12 @@ def generate_csv(start_time, end_time, interval_count):
         st.sidebar.markdown(get_download_link(temp_file_path), unsafe_allow_html=True)
         
         st.success("CSVファイルが正常に生成されました！")
-        st.write("Excelで開くことができます。")
+        st.write("CSVファイルを開くには、左のサイドバーのダウンロードボタンをクリックしてください。")
         
     except ValueError:
         st.error("無効な入力です。正しい値を入力してください。")
+        
+
         
 
 def get_download_link(file_path):
@@ -64,8 +66,17 @@ end_time = st.date_input("終了日時", value=datetime.date.today(), key='end')
 interval_count = st.number_input("分割数", min_value=1, step=1)
 
 # 説明文を表示する
-st.markdown("工程の開始日・終了日を選択し、分割数を半角数字で指定してください。 CSVファイルをダウンロードするボタンを押すと生成されます。")
+st.markdown("""   \n
+            工程の開始日・終了日を選択し、分割数を指定し、CSV生成ボタンを押してください。   \n
+             \n
+            最適化された日付タスクのリストを出力します。  \n
+            出力されたCSVはExcelで開くことが出来ます。
+            """)
 
 # CSVファイルを生成するボタンを作成する
 if st.button("CSV生成"):
     generate_csv(start_time, end_time, interval_count)
+
+
+st.write("\n取扱説明マニュアルは下記ボタンをクリックしてください。")
+st.link_button("マニュアルページへ", "https://daikino.notion.site/4D-csv-4D-270f83d85b08405aa79d0323dd4e5bec?pvs=4")
