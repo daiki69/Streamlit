@@ -15,7 +15,7 @@ def generate_csv(start_time, end_time, interval_count):
         rows = []
         for time in time_list:
             time = datetime.datetime.combine(time, datetime.time.min)
-            rows.append({'Time': time.strftime('%Y-%m-%dT%H:%M:%S')})
+            rows.append({'Time': time.strftime('%Y/%m/%d')})
 
         # ダウンロード用の一時ファイルを作成する
         temp_file_path = os.path.join(os.getcwd(), '4DCreate.csv')
