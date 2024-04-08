@@ -9,6 +9,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from wordcloud import WordCloud
 from collections import Counter
 import pandas as pd
+# word2vecを用いた感情分析を行うためのライブラリを追加
+from gensim.models import Word2Vec
 
 # spaCyで日本語テキストを処理するためのモデルをロード
 nlp = spacy.load("ja_core_news_sm")
